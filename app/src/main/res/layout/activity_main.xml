@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="myViewModle"
+            type="com.mohsendeadspace.roomdemo.SubscriberViewModle" />
+    </data>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="15dp"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/name_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text="@={myViewModle.inputName}"
+        android:hint="SubscribersName"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:inputType="textPersonName"
+        android:layout_margin="15dp"
+        android:layout_marginBottom="5dp"
+        />
+
+    <EditText
+        android:id="@+id/email_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="SubscribersEmail"
+        android:layout_marginTop="5dp"
+        android:layout_margin="15dp"
+        android:textSize="18sp"
+        android:text="@={myViewModle.inputEmail}"
+        android:textStyle="bold"
+        android:inputType="textPersonName"
+        android:layout_marginBottom="5dp"
+        tools:ignore="TextFields" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_margin="5dp"
+            android:id="@+id/save_or_update_button"
+            android:onClick="@{()->myViewModle.saveOrUpdate()}"
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@={myViewModle.saveOrupdateButtonText}" />
+
+        <Button
+            android:layout_margin="5dp"
+            android:id="@+id/clear_or_delete_button"
+            android:layout_width="wrap_content"
+            android:onClick="@{()->myViewModle.clearAllOrDelete()}"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@={myViewModle.clearOrDeleteButtonText}" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/subscriber_recyclerview"
+        android:layout_margin="5dp"/>
+</LinearLayout>
+</layout>
